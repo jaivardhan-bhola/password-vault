@@ -83,10 +83,10 @@ window['background'] = color['black1']
 window.resizable(False, False)
 fade = True
 title_bar_h = round(window.winfo_screenheight()/ 40)
-close_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\Password vault\\assets\\close_dark.png").resize((round(title_bar_h * 0.5), round(title_bar_h * 0.5))))
-search_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\Password vault\\assets\\search_dark.png").resize(size=(20,20)))
-add_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\Password vault\\assets\\add_dark.png").resize(size=(20,20)))
-min_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\Password vault\\assets\\min_dark.png").resize(size=(10,2)))
+close_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\close_dark.png").resize((round(title_bar_h * 0.5), round(title_bar_h * 0.5))))
+search_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\search_dark.png").resize(size=(20,20)))
+add_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\add_dark.png").resize(size=(20,20)))
+min_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\min_dark.png").resize(size=(10,2)))
 def exiting():
     if fade:
         alpha = window.attributes("-alpha")
@@ -287,7 +287,7 @@ def loginScreen():
             vaultScreen()
         else:
             txt.delete(0, 'end')
-            messagebox.showerror("Password Vault", "Incorrect password")
+            messagebox.showerror("password-vault", "Incorrect password")
             restart()
 
     def resetPassword():
@@ -364,7 +364,7 @@ def vaultScreen():
         db.commit()
         vaultScreen()
 
-    lbl = Label(frame, text="Password Vault", fg=color['blue2'], bg=color['black2'])
+    lbl = Label(frame, text="password-vault", fg=color['blue2'], bg=color['black2'])
     lbl.place(x=195, y=30)
     lbl2 = Label(frame, text="Search for website", fg=color['yellow'], bg=color['black2'])
     lbl2.place(x=175, y=120)
@@ -380,11 +380,11 @@ def vaultScreen():
         cursor.execute("SELECT * FROM vault WHERE website = ?",(txt,))
         entry = cursor.fetchall()
         if len(entry) == 0:
-            messagebox.showerror("Password Vault","Entry not found!")
+            messagebox.showerror("password-vault","Entry not found!")
         else:
             def exit_view():
                 frame2.destroy()
-            messagebox.showinfo("Password Vault","Entry Found")    
+            messagebox.showinfo("password-vault","Entry Found")    
             i = 0
             frame2 = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
             frame2.place(x=20, y=20)    
