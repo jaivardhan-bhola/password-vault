@@ -67,12 +67,12 @@ username TEXT NOT NULL,
 password TEXT NOT NULL);
 """)
 
-btn_font = ('Rany 18')
+btn_font = ('Gotham 18')
 frame_width = 560
 frame_height = 360
 window = Tk()
 window.update()
-window.option_add('*font', 'Rany 18')
+window.option_add('*font', 'Gotham 18')
 window.overrideredirect(True)
 w_window = 600
 h_window = 400
@@ -83,10 +83,10 @@ window['background'] = color['black1']
 window.resizable(False, False)
 fade = True
 title_bar_h = round(window.winfo_screenheight()/ 40)
-close_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\close_dark.png").resize((round(title_bar_h * 0.5), round(title_bar_h * 0.5))))
-search_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\search_dark.png").resize(size=(20,20)))
-add_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\add_dark.png").resize(size=(20,20)))
-min_img = ImageTk.PhotoImage(Image.open("D:\\Study\\Python\\projects\\password-vault\\assets\\min_dark.png").resize(size=(10,2)))
+close_img = ImageTk.PhotoImage(Image.open("assets\\close_dark.png").resize((round(title_bar_h * 0.5), round(title_bar_h * 0.5))))
+search_img = ImageTk.PhotoImage(Image.open("assets\\search_dark.png").resize(size=(20,20)))
+add_img = ImageTk.PhotoImage(Image.open("assets\\add_dark.png").resize(size=(20,20)))
+min_img = ImageTk.PhotoImage(Image.open("assets\\min_dark.png").resize(size=(10,2)))
 def exiting():
     if fade:
         alpha = window.attributes("-alpha")
@@ -210,7 +210,7 @@ def recoveryScreen(key):
     frame.place(x=20, y=20)
 
     lbl = Label(frame, text="Save this key to be able to recover account", fg=color['red2'], bg=color['black2'],
-                font=('Gotham 16 bold'))
+                font=('Gotham 16'))
     lbl.place(x=55, y=45)
 
     lbl1 = Label(frame, text=key, bg=color['black2'], fg=color['green'])
@@ -311,7 +311,7 @@ def vaultScreen():
     def addEntry():
         entry_window = Tk()
         entry_window.update()
-        entry_window.option_add('*font', 'Rany 18')
+        entry_window.option_add('*font', 'Gotham 18')
         entry_window.overrideredirect(True)
         w_window = 600
         h_window = 400
@@ -372,7 +372,7 @@ def vaultScreen():
     searchbox.place(x=180,y=165)
     searchbox.focus()
 
-    btn = CTkButton(text="Add new", command=addEntry, corner_radius=4, text_color=color['black1'],fg_color=color['green'], hover_color=color['yellow'], text_font=('Tenorite Bold', 14), bg_color=color['black2'],width=95,master=frame,image=add_img)
+    btn = CTkButton(text="Add new", command=addEntry, corner_radius=4, text_color=color['black1'],fg_color=color['green'], hover_color=color['yellow'], text_font=('Gotham Bold', 14), bg_color=color['black2'],width=95,master=frame,image=add_img)
     btn.place(x=230, y=250)
     titleBar(window)
     def search():
@@ -388,23 +388,23 @@ def vaultScreen():
             i = 0
             frame2 = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
             frame2.place(x=20, y=20)    
-            lbl = Label(frame2, text="Website", bg=color['black2'], fg=color['blue1'], font=('Tenorite Bold', 12))
+            lbl = Label(frame2, text="Website", bg=color['black2'], fg=color['blue1'], font=('Gotham Bold', 12))
             lbl.place(x=50, y=25)
-            lbl = Label(frame2, text="Username", bg=color['black2'], fg=color['purple2'], font=('Tenorite Bold', 12))
+            lbl = Label(frame2, text="Username", bg=color['black2'], fg=color['purple2'], font=('Gotham Bold', 12))
             lbl.place(x=205, y=25)
-            lbl = Label(frame2, text="Password", bg=color['black2'], fg=color['orange2'], font=('Tenorite Bold', 12))
+            lbl = Label(frame2, text="Password", bg=color['black2'], fg=color['orange2'], font=('Gotham Bold', 12))
             lbl.place(x=360, y=25)
-            lbl1 = Label(frame2, text=entry[i][1], font=('Tenorite Bold', 12),bg=color['black2'],fg=color['blue1'])
+            lbl1 = Label(frame2, text=entry[i][1], font=('Gotham Bold', 12),bg=color['black2'],fg=color['blue1'])
             lbl1.place(x=50, y=65 + (i * 40))
             lbl1.configure(anchor=CENTER)   
-            lbl2 = Label(frame2, text=(decrypt(entry[i][2], encryptionKey)), font=('Tenorite Bold', 12),bg=color['black2'], fg=color['purple2'])
+            lbl2 = Label(frame2, text=(decrypt(entry[i][2], encryptionKey)), font=('Gotham Bold', 12),bg=color['black2'], fg=color['purple2'])
             lbl2.place(x=205, y=65 + (i * 40))
             lbl2.configure(anchor=CENTER)   
-            lbl3 = Label(frame2, text=(decrypt(entry[i][3], encryptionKey)), font=('Tenorite Bold', 12),bg=color['black2'], fg=color['orange2'])
+            lbl3 = Label(frame2, text=(decrypt(entry[i][3], encryptionKey)), font=('Gotham Bold', 12),bg=color['black2'], fg=color['orange2'])
             lbl3.place(x=360, y=65 + (i * 40))
             lbl3.configure(anchor=CENTER)
-            btn = CTkButton(text="Delete", command=partial(removeEntry, entry[i][0]), corner_radius=4,text_color=color['red2'], fg_color=color['black2'], text_font=('Tenorite Bold', 12),bg_color=color['black2'], width=65, hover=None,master=frame2)
-            btn2 = CTkButton(text="Exit", command=exit_view, corner_radius=4,text_color=color['black1'], fg_color=color['orange1'],bg_color=color['black2'], width=65, hover_color=color['blue1'],master=frame2,text_font=('Rany',25))
+            btn = CTkButton(text="Delete", command=partial(removeEntry, entry[i][0]), corner_radius=4,text_color=color['red2'], fg_color=color['black2'], text_font=('Gotham Bold', 12),bg_color=color['black2'], width=65, hover=None,master=frame2)
+            btn2 = CTkButton(text="Exit", command=exit_view, corner_radius=4,text_color=color['black1'], fg_color=color['orange1'],bg_color=color['black2'], width=65, hover_color=color['blue1'],master=frame2,text_font=('Gotham',25))
             btn.place(x=490, y=65+ (i * 40))
             btn2.place(x=35, y=290)  
             i += 1
