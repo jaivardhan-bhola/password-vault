@@ -165,14 +165,14 @@ def firstTimeScreen():
     lbl = Label(frame, text="Choose a Master Password", fg=color['red2'], bg=color['black2'])
     lbl.place(x=125, y=45)
 
-    txt = CTkEntry(frame, width=200, show="*", justify='center', corner_radius=4, text_color=color['red1'])
+    txt = CTkEntry(frame, width=200, show="●", justify='center', corner_radius=4, text_color=color['red1'])
     txt.place(x=200, y=85)
     txt.focus()
 
     lbl1 = Label(frame, text="Re-enter password", fg=color['purple2'], bg=color['black2'])
     lbl1.place(x=175, y=135)
 
-    txt1 = CTkEntry(frame, width=200, show="*", justify='center', corner_radius=4, text_color=color['red1'])
+    txt1 = CTkEntry(frame, width=200, show="●", justify='center', corner_radius=4, text_color=color['red1'])
     txt1.place(x=200, y=185)
     titleBar(window)
     def savePassword():
@@ -265,7 +265,7 @@ def loginScreen():
     lbl = Label(frame, fg=color['blue1'], bg=color['black2'], text="Enter  Master Password")
     lbl.place(x=150, y=60)
 
-    txt = CTkEntry(frame, width=200, show="*", justify='center', corner_radius=4, text_color=color['red1'])
+    txt = CTkEntry(frame, width=200, show="●", justify='center', corner_radius=4, text_color=color['red1'])
     txt.place(x=190, y=125)
     txt.focus()
 
@@ -335,7 +335,7 @@ def vaultScreen():
 
         lbl3 = Label(frame2, text="Enter password", fg=color['orange2'], bg=color['black2'])
         lbl3.place(x=40, y=215)
-        txt3 = CTkEntry(frame2, width=220, justify='center', corner_radius=4, text_color=color['orange2'], show='*')
+        txt3 = CTkEntry(frame2, width=220, justify='center', corner_radius=4, text_color=color['orange2'], show='●')
         txt3.place(x=50, y=265)
         def savePassword():
             global website, username, password
