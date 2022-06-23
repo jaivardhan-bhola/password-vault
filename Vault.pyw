@@ -13,8 +13,6 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from customtkinter import *
 from PIL import Image, ImageTk
-from ctypes import windll
-import win32mica as mc
 
 backend = default_backend()
 salt = b'2444'
@@ -24,7 +22,7 @@ kdf = PBKDF2HMAC(
     salt=salt,
     iterations=100000,
     backend=backend
-)
+    )
 color = { 
     'black1': '#323232',
     'black2': '#505050',
@@ -76,6 +74,7 @@ window = Tk()
 window.update()
 window.option_add('*font', 'Gotham 18')
 window.overrideredirect(True)
+window["bg"] = color["black1"]
 w_window = 600
 h_window = 400
 pos_right = round(window.winfo_screenwidth() / 2 - w_window / 2)
@@ -119,16 +118,16 @@ def Dragging(event):
     x, y = event.x - lastClickX + window.winfo_x(), event.y - lastClickY + window.winfo_y()
     window.geometry("+%s+%s" % (x, y))
 def titleBar(window):
-    dummy_title_bar = Frame(window, bg="#000000")
+    dummy_title_bar = Frame(window, bg = color["black1"])
     dummy_title_bar.place(x=0, y=0, width=w_window, height=title_bar_h)
     dummy_title_bar.bind('<Button-1>', SaveLastClickPos)
     dummy_title_bar.bind('<B1-Motion>', Dragging)
     dummy_title_bar.bind('<Map>', maximise)
-    backer = Button(dummy_title_bar, bd=0, bg="#000000", command=exiting,activebackground=color['red2'],image=close_img)
+    backer = Button(dummy_title_bar, bd=0, bg=color['black1'], command=exiting,activebackground=color['red2'],image=close_img)
     backer.place(x=w_window-title_bar_h, y=0, width=title_bar_h, height=title_bar_h)
     backer.bind('<Enter>', lambda e: backer.config(background=color['red2']))
-    backer.bind('<Leave>', lambda e: backer.config(background="#000000"))
-    minimiser=Button(dummy_title_bar,bd=0,bg="#000000", command=minimise,activebackground=color['yellow'],image=min_img)
+    backer.bind('<Leave>', lambda e: backer.config(background=color['black1']))
+    minimiser=Button(dummy_title_bar,bd=0,bg=color['black1'], command=minimise,activebackground=color['yellow'],image=min_img)
     minimiser.place(x=w_window-title_bar_h-20, y=0, width=title_bar_h, height=title_bar_h)
 
 def minimise():
@@ -141,17 +140,11 @@ def hashPassword(input):
     hash1 = hash1.hexdigest()
 
     return hash1
-def add_mica():
-    window.configure(bg="#000000")
-    window.wm_attributes("-transparent", "#000000")
-    window.update()
-    HWND=windll.user32.GetParent(window.winfo_id())
-    mc.ApplyMica(HWND, ColorMode=mc.MICAMODE.DARK)
 
 def newUser():
     for widget in window.winfo_children():
         widget.destroy()  
-    add_mica()      
+          
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
     lbl = Label(frame, text="No existing vault file\ncould be found.",fg=color['red2'], bg=color['black2'])
@@ -169,7 +162,7 @@ def newUser():
 def firstTimeScreen():
     for widget in window.winfo_children():
         widget.destroy()
-    add_mica()
+    
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
     lbl = Label(frame, text="Choose a Master Password", fg=color['red2'], bg=color['black2'])
@@ -216,7 +209,7 @@ def firstTimeScreen():
 def recoveryScreen(key):
     for widget in window.winfo_children():
         widget.destroy()
-    add_mica()    
+        
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
 
@@ -240,7 +233,7 @@ def recoveryScreen(key):
 def resetScreen():
     for widget in window.winfo_children():
         widget.destroy()
-    add_mica()    
+        
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
     lbl = Label(frame, fg=color['orange2'], bg=color['black2'], text="Enter Recovery Key")
@@ -271,7 +264,7 @@ def resetScreen():
 def loginScreen():
     for widget in window.winfo_children():
         widget.destroy()
-    add_mica()
+    
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
 
@@ -319,7 +312,7 @@ def loginScreen():
 def vaultScreen():
     for widget in window.winfo_children():
         widget.destroy()
-    add_mica()     
+         
     frame = CTkFrame(master=window, corner_radius=5, fg_color=color['black2'], width=560, height=360)
     frame.place(x=20, y=20)
     def addEntry():
